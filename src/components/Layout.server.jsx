@@ -26,6 +26,8 @@ export default function Layout({children, hero}) {
     preload: '*',
   });
   const collections = data ? flattenConnection(data.collections) : null;
+  const mostPopularProducts = data ? flattenConnection(data.products) : [];
+
   const products = data ? flattenConnection(data.products) : null;
   const storeName = data ? data.shop.name : '';
 
@@ -52,7 +54,7 @@ export default function Layout({children, hero}) {
           </div>
         </main>
 
-        <Collection1 />
+        <Collection1 mostPopularProducts={mostPopularProducts} />
         <Footer collection={collections[0]} product={products[0]} />
       </div>
     </LocalizationProvider>
